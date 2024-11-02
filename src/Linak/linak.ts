@@ -27,6 +27,8 @@ export const linak = async (mqtt: IMQTTConnection, esphome: IESPConnection) => {
     const deviceData = buildMQTTDeviceData({ ...device, address }, 'Linak');
     await connect();
     const services = await getServices();
+    logInfo("[Linak] got services list");
+    logInfo("Services list " + services);
 
     const service = services.find((s) => s.uuid === '99fa0001-338a-1024-8a49-009c0215f78a');
     if (!service) {
@@ -34,6 +36,8 @@ export const linak = async (mqtt: IMQTTConnection, esphome: IESPConnection) => {
       await disconnect();
       continue;
     }
+
+    logInfo("Characteristic list " + service.characteristicsList);
 
     const characteristic = service.characteristicsList.find((c) => c.uuid === '99fa0002-338a-1024-8a49-009c0215f78a');
     if (!characteristic) {
