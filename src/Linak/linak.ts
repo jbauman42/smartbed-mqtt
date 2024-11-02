@@ -42,7 +42,7 @@ export const linak = async (mqtt: IMQTTConnection, esphome: IESPConnection) => {
 
     logInfo("Characteristic list " + service.characteristicsList);
     for (const characteristic of service.characteristicsList) {
-	    logInfo("Service " + characteristic.uuid;
+	    logInfo("Service " + characteristic.uuid);
     }
 
     const characteristic = service.characteristicsList.find((c) => c.uuid === '99fa0002-338a-1024-8a49-009c0215f78a');
