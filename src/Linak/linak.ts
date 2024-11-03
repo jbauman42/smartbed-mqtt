@@ -94,8 +94,8 @@ export const linak = async (mqtt: IMQTTConnection, esphome: IESPConnection) => {
     if (hasMassage) setupMassageButtons(mqtt, controller);
     else if (!isAdvanced) setupBasicButtons(mqtt, controller);
 
-    if (!isAdvanced) continue;
     setupPresetButtons(mqtt, controller);
+    if (!isAdvanced) continue;
 
     const mapPositionData = (data: Uint8Array) => (data[1] << 8) | data[0];
     if (notifyHandles.back) {
